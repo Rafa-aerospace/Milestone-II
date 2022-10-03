@@ -95,9 +95,6 @@ for dt in Delta_t:
 
 # %% Plotting
 
-# x = np.linspace(-1,1,100)
-# y = np.sqrt(1-x**2)
-
 colours = ['blue', 'red', 'magenta', 'black', 'grey', 'cyan', 'yellow']
 
 
