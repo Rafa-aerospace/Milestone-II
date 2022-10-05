@@ -60,9 +60,9 @@ Temoral_schemes_available = {0:"Euler",
                              2:"RK4",
                              3:"Crank-Nicolson"}
 
-scheme = Temoral_schemes_available[3]
+scheme = Temoral_schemes_available[1]
 
-r_0 = np.array([1, 0]) # Initial position
+r_0 = np.array([1, 0]) # Initial position   np.array([1.9, 0])
 
 v_0 = np.array([0, 1]) # Initial velocity
 
@@ -70,7 +70,7 @@ U_0 = np.hstack((r_0,v_0)) # U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
 
 print('Initial State Vector: U_0 = ', U_0, '\n\n\n')   
 
-tf = 20 # 1000
+tf = 20 # 500
 
 Delta_t = [0.2, 0.1, 0.01, 0.001]   # Δt for different simulations
 
@@ -105,8 +105,15 @@ colours = ['blue', 'red', 'magenta', 'black', 'grey', 'cyan', 'yellow']
 i = 0
 
 fig, ax = plt.subplots(1,1, figsize=(8,8), constrained_layout='true')
-ax.set_xlim(-1.25,1.25)
-ax.set_ylim(-1.25,1.25)
+
+if scheme == 'Inverse Euler' and tf==500:
+    ax.set_xlim(-50,2)
+    ax.set_ylim(-20,20)
+elif scheme == 'Inverse Euler':
+        ax.set_xlim(-1.25,1.25)
+        ax.set_ylim(-1.25,1.25)
+
+
 ax.set_title('Numeric Scheme: '+scheme, fontsize=20)
 ax.grid()
 ax.set_xlabel(r'$x$',fontsize=20)
