@@ -60,9 +60,9 @@ Temoral_schemes_available = {0:"Euler",
                              2:"RK4",
                              3:"Crank-Nicolson"}
 
-scheme = Temoral_schemes_available[2]
+scheme = Temoral_schemes_available[3]
 
-r_0 = np.array([1.95, 0]) # Initial position
+r_0 = np.array([1, 0]) # Initial position
 
 v_0 = np.array([0, 1]) # Initial velocity
 
@@ -70,15 +70,17 @@ U_0 = np.hstack((r_0,v_0)) # U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
 
 print('Initial State Vector: U_0 = ', U_0, '\n\n\n')   
 
-tf = 10 # 1000
+tf = 20 # 1000
 
 Delta_t = [0.2, 0.1, 0.01, 0.001]   # Δt for different simulations
 
-U = {}
+
 
 
 
 # %%
+
+U = {}
 
 for dt in Delta_t:
     
@@ -103,8 +105,8 @@ colours = ['blue', 'red', 'magenta', 'black', 'grey', 'cyan', 'yellow']
 i = 0
 
 fig, ax = plt.subplots(1,1, figsize=(8,8), constrained_layout='true')
-# ax.set_xlim(-1.25,1.25)
-# ax.set_ylim(-1.25,1.25)
+ax.set_xlim(-1.25,1.25)
+ax.set_ylim(-1.25,1.25)
 ax.set_title('Numeric Scheme: '+scheme, fontsize=20)
 ax.grid()
 ax.set_xlabel(r'$x$',fontsize=20)
@@ -120,4 +122,5 @@ for key in U:
     i = i+1
 
 ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16); i = 0
+fig.savefig('HITO_2'+scheme+'_tf=_'+str(tf)+'.pdf', transparent = True, bbox_inches="tight")
 plt.show()
