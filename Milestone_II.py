@@ -54,13 +54,14 @@ def Kepler_Orbits_2N(X, t):
     return np.array([F1, F2, F3, F4])
 
 # %% Initialitation
+tf = 20 # 500
 
 Temoral_schemes_available = {0:"Euler",
                              1:"Inverse Euler",
                              2:"RK4",
                              3:"Crank-Nicolson"}
 
-scheme = Temoral_schemes_available[1]
+scheme = Temoral_schemes_available[3]
 
 r_0 = np.array([1, 0]) # Initial position   np.array([1.9, 0])
 
@@ -70,7 +71,6 @@ U_0 = np.hstack((r_0,v_0)) # U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
 
 print('Initial State Vector: U_0 = ', U_0, '\n\n\n')   
 
-tf = 20 # 500
 
 Delta_t = [0.2, 0.1, 0.01, 0.001]   # Δt for different simulations
 

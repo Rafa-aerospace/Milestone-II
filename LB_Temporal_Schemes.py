@@ -130,9 +130,9 @@ def Crank__Nicolson(X, t, dt, Function):
     def  Crank_Nicolson_Operator(U_n1):
         return  U_n1 - X - dt/2 * ( Function(X,t) + Function(U_n1,t+dt) )
     
-    U_n1 = fsolve(Crank_Nicolson_Operator, X) # Scipy Function
+    #U_n1 = fsolve(Crank_Nicolson_Operator, X) # Scipy Function
     
-    # U_n1 = mth.Newton_Raphson(Crank_Nicolson_Operator, x_i=X) # Rafa's Function
+    U_n1 = mth.Newton_Raphson(Crank_Nicolson_Operator, x_i=X) # Rafa's Function
     
     return U_n1
 
