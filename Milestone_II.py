@@ -5,7 +5,7 @@ Created on Wed Sep 21 17:22:48 2022
 @author: Rafael Rivero de Nicolás
 """
 
-import numpy as np
+from numpy import array, zeros, hstack, linspace
 # import LB_Temporal_Schemes as ts # Users module
 import LB_Math_Functions as mth # Users module
 
@@ -51,10 +51,10 @@ def Kepler_Orbits_2N(X, t):
     
     F4 = -X[1]/(X[0]**2 + X[1]**2)**(3/2)
 
-    return np.array([F1, F2, F3, F4])
+    return array([F1, F2, F3, F4])
 
 # %% Initialitation
-tf = 20 # 500
+tf = 500 # 500
 
 Temoral_schemes_available = {0:"Euler",
                              1:"Inverse Euler",
@@ -63,22 +63,18 @@ Temoral_schemes_available = {0:"Euler",
 
 scheme = Temoral_schemes_available[3]
 
-r_0 = np.array([1, 0]) # Initial position   np.array([1.9, 0])
+r_0 = array([1.9, 0]) # Initial position   np.array([1.9, 0])
 
-v_0 = np.array([0, 1]) # Initial velocity
+v_0 = array([0, 1]) # Initial velocity
 
-U_0 = np.hstack((r_0,v_0)) # U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
+U_0 = hstack((r_0,v_0)) # U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
 
 print('Initial State Vector: U_0 = ', U_0, '\n\n\n')   
-
 
 Delta_t = [0.2, 0.1, 0.01, 0.001]   # Δt for different simulations
 
 
-
-
-
-# %%
+# %% Simulations
 
 U = {}
 
@@ -86,11 +82,11 @@ for dt in Delta_t:
     
     N = int( tf/dt )
     
-    time_domain = np.linspace( 0, tf, N+1 )
+    time_domain = linspace( 0, tf, N+1 )
     
     print('Temporal partition used Δt = ', str(dt))
     
-    U[scheme+'__dt=' + str(dt)] = mth.Cauchy_Problem( Kepler_Orbits_2N, U_0, time_domain, Temporal_scheme = scheme )
+    U[scheme+'__dt=' + str(dt)] = mth.Cauchy_Problem( F = Kepler_Orbits_2N, U_0 = U_0, time_domain = time_domain, Temporal_scheme = scheme )
     
     print('\n\n\n')
 

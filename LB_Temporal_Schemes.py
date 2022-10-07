@@ -5,11 +5,12 @@ Created on Fri Sep 23 23:46:33 2022
 @author: Rafael Rivero de Nicolás
 """
 
-
-# import numpy as np
 import LB_Math_Functions as mth
 
-from scipy.optimize import fsolve
+
+# import numpy as np
+# from scipy.optimize import fsolve
+
 
 # %% Functions Definitions
 

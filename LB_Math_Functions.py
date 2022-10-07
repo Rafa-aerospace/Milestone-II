@@ -8,7 +8,6 @@ Created on Fri Sep 30 21:03:25 2022
 from numpy import zeros, linalg, matmul
 import LB_Temporal_Schemes as ts
 
-
 def Cauchy_Problem(F, U_0, time_domain, Temporal_scheme='RK4'):
     
     print( 'Temporal Scheme used:: ' + Temporal_scheme )
@@ -20,10 +19,10 @@ def Cauchy_Problem(F, U_0, time_domain, Temporal_scheme='RK4'):
     U[:,0] = U_0
     
     for i in range(0, len(time_domain)-1):
+       
+        dt = time_domain[i+1] - time_domain[i]
         
-        dt = round(time_domain[i+1] - time_domain[i], 8)
-        
-        t = round(t + dt, 8)
+        t = t + dt
         
         X = U[:,i]
         
