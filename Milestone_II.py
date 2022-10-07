@@ -6,7 +6,7 @@ Created on Wed Sep 21 17:22:48 2022
 """
 
 from numpy import array, zeros, hstack, linspace
-# import LB_Temporal_Schemes as ts # Users module
+
 import LB_Math_Functions as mth # Users module
 
 import matplotlib.pyplot as plt
